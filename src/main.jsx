@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import Root from './Root';
 import Home from './Home';
+import Read from './Read';
+import Update from './Update';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>  ,
+      },
+      {
+        path: "/reads",
+        element:  <Read></Read>   ,
+    
+      },
+      {
+        path: "/update/:id",
+        element:   <Update></Update> ,
+        loader: ({params})=> fetch(`http://localhost:5000/users/${params.id}`)
+    
       },
     ],
   },
